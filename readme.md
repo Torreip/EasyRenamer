@@ -1,5 +1,5 @@
 <div align="center">
-<img src="/master/icon.png" alt="EasyRenamer" width="256" />
+<img src="(https://github.com/Torreip/EasyRenamer/blob/master/Master/icon.jpg?raw=true)" alt="EasyRenamer" width="256" />
 
 # Easy Renamer
 Your easy way to rename a every file in a folder !
@@ -8,7 +8,7 @@ Your easy way to rename a every file in a folder !
 
 ## What does your program do ?
 
-It mostly saves you time ! Have you ever had 12,24 or 100 000 files to rename in the order they appear inside your favorite file explorer.
+It mostly saves you time ! Have you ever had 12, 24 or 100 000 files to rename in the order they appear inside your favorite file explorer.
 From a folder path and a new file name it will rename every thing inside a folder.
 
 ## How To use The program ?
