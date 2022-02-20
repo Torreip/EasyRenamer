@@ -10,14 +10,19 @@ def main():
         name = str(input("What should it be renamed to ? "))
     #MainLoop
     for count, filename in enumerate(os.listdir(folder)):
+        if count < 10:
+            number = f"0{str(count+1)}"
+        else:
+            number = f"{str(count+1)}"
         current = f"{str(folder)}{str(filename)}"
         fname , fext = os.path.splitext(f"{str(current)}")
-        dst = f"{str(name)}{str(count)}{str(fext)}"
+        dst = f"{str(name)}{str(number)}{str(fext)}"
         src =f"{folder}/{filename}"
         dst =f"{folder}/{dst}"
          
         os.rename(src, dst)
     print(f"Every file in '{str(folder)}' has been renamed.")
+    print("Do you want to rename other files ? ")
     c1 = input("Make your choice (Y or n) ")
     c1 = c1.lower()
 
