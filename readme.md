@@ -1,5 +1,5 @@
 <div align="center">
-<img src="(https://github.com/Torreip/EasyRenamer/blob/master/Master/icon.jpg?raw=true)" alt="EasyRenamer" width="256" />
+<img src="https://github.com/Torreip/EasyRenamer/blob/master/Master/icon.png" alt="EasyRenamer" width="256" />
 
 # Easy Renamer
 Your easy way to rename a every file in a folder !
