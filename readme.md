@@ -2,7 +2,7 @@
 <img src="https://github.com/Torreip/EasyRenamer/blob/master/Master/icon.png" alt="EasyRenamer" width="256" />
 
 # Easy Renamer
-Your easy way to rename a every file in a folder !
+Your easy way to rename every file in a folder !
 
 </div>
 
