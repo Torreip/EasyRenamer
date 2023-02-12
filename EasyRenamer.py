@@ -38,7 +38,7 @@ def choice(log, log_path, log_mode):
     if c1 == "y" or c1 == "ye" or c1 == "yes":
         main(log, log_path, log_mode)
     else:
-        print("\33[94mThank's for using my program (V1.2) ! \nSigned Torreip 2022\u001b[0m")
+        print("\33[94mThank's for using my program (V1.3) ! \nSigned Torreip 2023\u001b[0m")
         time.sleep(2)
         sys.exit(0)
 
