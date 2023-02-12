@@ -21,4 +21,19 @@ From a folder path and a new file name it will rename every thing inside a folde
 
 You either download the .EXE file (If you are using Windows) Or you can download the EasyRenamer.py file (Warning you need Python Installed !).
 
-###### Last Update 20/02/22 (or 02/20/22)
+## Configuration
+
+The Default configuration is the following:
+
+log=False
+path=EasyRenamer.log
+mode=append
+
+You can change the configuration by editing the config.cfg file.
+
+log is a boolean which enable or disable the log file. (True or False), case insensitive.
+path is the path of the log file.
+mode is the mode of the log file (append or write, Everything which is not append will be considered as write).
+
+
+###### Last Update 12/02/23 (or 02/12/23)
