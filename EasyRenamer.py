@@ -8,12 +8,16 @@ def readSettings():
                 raise FileNotFoundError
             for i in lines:
                 if i.startswith("log"):
-                    log = bool(i.rstrip().strip().split("=")[1])
+                    if (i.rstrip().strip().split("=")[1].upper()) == "FALSE":
+                        log = False
+                    else:
+                        log = True
                 if i.startswith("_path"):
                     log_path = i.rstrip().strip().split("=")[1]
                 if i.startswith("_mode"):
                     log_mode = i.rstrip().strip().split("=")[1]
-            print(log, log_path, log_mode)
+            print("Settigs for this session : ")
+            print(log, "||", log_path, "||" ,log_mode)
             return log, log_path, log_mode
             
     except FileNotFoundError:

@@ -31,7 +31,7 @@ mode=append
 
 You can change the configuration by editing the config.cfg file.
 
-log is a boolean which enable or disable the log file. (True or False), case insensitive.
+log is a boolean which enable or disable the log file. (True or False), Everything which is not False will be considered as True.
 path is the path of the log file.
 mode is the mode of the log file (append or write, Everything which is not append will be considered as write).
 
