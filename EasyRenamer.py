@@ -16,15 +16,18 @@ def readSettings():
                     log_path = i.rstrip().strip().split("=")[1]
                 if i.startswith("_mode"):
                     log_mode = i.rstrip().strip().split("=")[1]
+                if i.startswith("_leadingZerosInSingleDigit"):
+                    leadingZeros_mode = i.rstrip().strip().split("=")[1]
             print("Settigs for this session : ")
-            print(log, "||", log_path, "||" ,log_mode)
-            return log, log_path, log_mode
+            print(log, "||", log_path, "||" ,log_mode, "||", leadingZeros_mode)
+            return log, log_path, log_mode, leadingZeros_mode
             
     except FileNotFoundError:
         with open("config.cfg", "w") as f:
             f.write("log=False\n")
             f.write("_path=EasyRenamer.log\n")
             f.write("_mode=append\n")
+            f.write("_leadingZerosInSingleDigit=False\n")
         return readSettings()
 
     except ValueError:
@@ -32,34 +35,46 @@ def readSettings():
             f.write("log=False\n")
             f.write("_path=EasyRenamer.log\n")
             f.write("_mode=append\n")
+            f.write("_leadingZerosInSingleDigit=False\n")
         return readSettings()
-
+    
+    except UnboundLocalError:
+        with open("config.cfg", "w") as f:
+            f.write("log=False\n")
+            f.write("_path=EasyRenamer.log\n")
+            f.write("_mode=append\n")
+            f.write("_leadingZerosInSingleDigit=False\n")
+        return readSettings()
+    
 #ContinueFuntion
-def choice(log, log_path, log_mode):
+def choice(log, log_path, log_mode, leadingZeros_mode):
     print("Do you want to rename other files ? ")
     c1 = input("Make your choice (Y or n) ").lower()
 
     if c1 == "y" or c1 == "ye" or c1 == "yes":
-        main(log, log_path, log_mode)
+        main(log, log_path, log_mode, leadingZeros_mode)
     else:
-        print("\33[94mThank's for using my program (V1.3) ! \nSigned Torreip 2023\u001b[0m")
+        print("\33[94mThank's for using my program (V1.5) ! \nSigned Torreip 2023\u001b[0m")
         time.sleep(2)
         sys.exit(0)
 
 #EasyRenamerMainFunction
-def main(log, log_path, log_mode):
+def main(log, log_path, log_mode, leadingZeros_mode):
     logRaw = []
     folder = ""
     while folder == "":
         folder = str(input("Enter the complete path of your desired folder ? (It can't be left blank) "))
         name = str(input("What should it be renamed to ? "))
     #MainLoop
-    max = len(str(len(os.listdir(folder))))-1
+    if leadingZeros_mode == "True" and len(os.listdir(folder)) < 10:
+        max = len(str(len(os.listdir(folder))))
+    else :
+        max = len(str(len(os.listdir(folder)))) - 1
     treshold = int("1" + "0" * max)-1
     try:
         for count, filename in enumerate(os.listdir(folder)):
             if count < treshold:
-                leadingZeros = "0" * (max+1 - len(str(count)))
+                leadingZeros = "0" * (max+1 - len(str(count+1)))
                 number = f"{leadingZeros}{str(count+1)}"
             else:
                 number = f"{str(count+1)}"
@@ -91,11 +106,11 @@ def main(log, log_path, log_mode):
                 with open(f"{str(log_path)}", "w") as f:
                     f.write(f"\n\n --- Log for folder '{str(folder)}' LOG GENERATED ON {datetime.datetime.now()}  \n")
                     f.writelines(logRaw)
-        choice(log, log_path, log_mode)
+        choice(log, log_path, log_mode, leadingZeros_mode)
     except (FileNotFoundError, NotADirectoryError, PermissionError, OSError):
         print("An error occured, please try again.")
-        main(log, log_path, log_mode)
+        main(log, log_path, log_mode, leadingZeros_mode)
  
 if __name__ == '__main__':
-    log, log_path, log_mode = readSettings()
-    main(log, log_path, log_mode)
+    log, log_path, log_mode, leadingZeros_mode = readSettings()
+    main(log, log_path, log_mode, leadingZeros_mode)
